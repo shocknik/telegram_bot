@@ -60,6 +60,14 @@
         button:hover {
             background: var(--tg-theme-secondary-bg-color);
         }
+        #form {
+            display: none;
+            text-align: center;
+        }
+
+        input:focus {
+            border-color: #db5d5d;
+        }
 
 
     </style>
@@ -83,6 +91,24 @@
 
     </script>
 
+    <script>
+        let tg = window.Telegram.WebApp;
+        let buy = document.getElementById("buy");
+        let order = document.getElementById("order");
 
-    </body>
+        buy.addEventListener("click", () => {
+            document.getElementById("main").style.display = "none";
+            document.getElementById("form").style.display = "block";
+            document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name 
+        });
+
+
+        order.addEventListener("click", () => {
+            tg.close();
+        })
+
+    </script>
+
+
+</body>
 </html>
